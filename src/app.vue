@@ -1,6 +1,6 @@
 <template lang="pug">
-ciu-screen-center(v-if="!me.state")
-  ciu-loading-overlay(:loading="me.loading")
+c-screen-center(v-if="!me.state")
+  c-loading-overlay(:loading="me.loading")
     login-view
 div(v-else)
   navbar

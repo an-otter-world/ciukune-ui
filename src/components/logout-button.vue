@@ -1,6 +1,6 @@
 <template lang="pug">
-a(@click="logout()" href="#" class="ciu-logout-button")
-  div(class="ciu-router-link ciu-flex-row")
+a(@click="logout()" href="#" class="logout-button")
+  div(class="c-router-link c-flex-row")
     ciu-icon(icon="sign-out-alt")
     div {{ $t("logout-button.logout") }}
 </template>
@@ -25,7 +25,7 @@ export default defineComponent({
 </script>
 
 <style>
-.ciu-logout-button > svg {
+.logout-button > svg {
   margin-right: var(--ciu-spacing);
 }
 </style>

@@ -1,13 +1,13 @@
 <template lang="pug">
-ciu-component
+c-component
   header
     h1 Profile
-  ciu-api-form(:resource="me")
-    ciu-api-errors
-    ciu-api-input(field="email")
-      ciu-text-field(:placeholder="$t('profile.email')" v-model="state.email")
-    ciu-api-input(field="username" patch)
-      ciu-text-field(:placeholder="$t('profile.username')" v-model="state.username")
+  c-api-form(:resource="me")
+    c-api-errors
+    c-api-input(field="email")
+      c-text-field(:placeholder="$t('profile.email')" v-model="state.email")
+    c-api-input(field="username" patch)
+      c-text-field(:placeholder="$t('profile.username')" v-model="state.username")
 </template>
 
 <script lang="ts">

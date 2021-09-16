@@ -7,11 +7,12 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@ciukune/ckc": "github:an-otter-world/ckc#dev",
+    "@ciukune/ckc": "github:an-otter-world/ckc#main",
     "axios": "^0.21.1",
     "esbuild": "^0.9.4",
     "eslint": "^7.22.0",
     "pug": "^3.0.2",
+    "sass": "^1.41.1",
     "vue": "^3.0.5",
     "vue-i18n": "^9.0.0",
     "vue-router": "^4.0.9"

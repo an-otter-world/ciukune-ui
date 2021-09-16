@@ -1,14 +1,14 @@
 <template lang="pug">
-ciu-screen-center
-  ciu-component
+c-screen-center
+  c-component
     header {{ $t('login.title') }}
-    ciu-api-form(:resource="login" @submit.prevent="doLogin()")
-      ciu-api-errors
-      ciu-api-input(field="email")
-        ciu-text-field(:placeholder="$t('login.email')" v-model="login.email")
-      ciu-api-input(field="password")
-        ciu-text-field(password :placeholder="$t('login.password')" v-model="login.password")
-      ciu-button(type="submit") {{ $t('login.login') }} 
+    c-api-form(:resource="login" @submit.prevent="doLogin()")
+      c-api-errors
+      c-api-input(field="email")
+        c-text-field(:placeholder="$t('login.email')" v-model="login.email")
+      c-api-input(field="password")
+        c-text-field(password :placeholder="$t('login.password')" v-model="login.password")
+      c-button(type="submit") {{ $t('login.login') }} 
     hr
     div(class="links-area")
       a(href='#') {{ $t('login.reset-password') }}

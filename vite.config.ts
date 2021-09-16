@@ -3,11 +3,14 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  optimizeDeps: {
+    exclude: ['@ciukune/ckc']
+  },
   plugins: [vue()],
   server: {
     proxy: {
       '/api': 'http://localhost:8000/',
-    }
+    },
   },
   build: {
     sourcemap: true,
