@@ -4,12 +4,11 @@ button(class="control ciu-ripple" :type="type")
 </template>
 
 <script lang="ts">
-import { PropType } from 'vue'
-import { defineComponent } from 'vue'
+import { PropType, defineComponent } from 'vue'
 
 export default defineComponent({
   props: {
-    'type': String,
+    'type': String as PropType<"button" | "reset" | "submit" | undefined>,
   },
   setup() {
     
