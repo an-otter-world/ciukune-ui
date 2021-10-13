@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/an-otter-world/ckc
+	branch = dev
+	commit = 791b4fee2ffe5b9ae6ace315ea909bbf4c1b5ef2
+	parent = 6d857ad54c2eccb64275fa9281f8a19e447cbc91
+	method = merge
+	cmdver = 0.4.0
