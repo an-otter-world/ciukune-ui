@@ -18,30 +18,28 @@ export default defineComponent({
 })
 </script>
 
-<style>
+<style lang="scss">
 .loading-overlay {
   display: grid;
-}
+  > * {
+    grid-area: 1 / 1
+  }
 
-.loading-overlay > * {
-  grid-area: 1 / 1
-}
+  #background, #spinner {
+    opacity: 0;
+    transition: opacity var(--transition-duration) ease var(--transition-duration);
+    z-index: -1;
+  }
 
-.loading-overlay #background, #spinner {
-  opacity: 0;
-  transition: opacity var(--transition-duration) ease var(--transition-duration);
-  z-index: -1;
-}
+  .loading #background {
+    background: var(--surface);
+    opacity: 0.5;
+    z-index: 1;
+  }
 
-.loading-overlay.loading #background {
-  background: var(--surface);
-  opacity: 0.5;
-  z-index: 1;
+  .loading #spinner {
+    opacity: 1;
+    z-index: 1;
+  }
 }
-
-.loading-overlay.loading #spinner {
-  opacity: 1;
-  z-index: 1;
-}
-
 </style>
