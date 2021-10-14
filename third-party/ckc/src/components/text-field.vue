@@ -1,11 +1,14 @@
 <template lang="pug">
 div(class="text-field")
   input(
-    :placeholder="placeholder"
+    placeholder=" "
     :type="password ? 'password' : 'text'"
     :value="modelValue"
     @input="valueChanged($event)"
   )
+  div(class="text-field-placeholder")
+    div {{placeholder}}
+
 
 </template>
 
@@ -46,6 +49,7 @@ export default defineComponent({
     font: var(--font);
     grid-area: 1 / 1;
     transition: border-bottom 0.2s;
+    z-index: 1;
     &:focus {
       outline: none;
       border-bottom: 1px var(--primary-light) solid;
@@ -70,7 +74,6 @@ export default defineComponent({
   grid-area: 1 / 1;
   transition-duration: 0.2s;
   transition-property: transform font-size;
-  z-index: -1;
   > div {
     align-self: center;
   }

@@ -6,7 +6,7 @@
 [subrepo]
 	remote = https://github.com/an-otter-world/ckc
 	branch = dev
-	commit = 791b4fee2ffe5b9ae6ace315ea909bbf4c1b5ef2
-	parent = 6d857ad54c2eccb64275fa9281f8a19e447cbc91
+	commit = 542ee81ed6f1f934533dd5a7f8850fcf170253bc
+	parent = 7c83e8771475b1c46f22069a0efbb52948434c56
 	method = merge
 	cmdver = 0.4.0

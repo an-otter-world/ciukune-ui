@@ -13,33 +13,37 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   props: {
-    'loading': Boolean,
-  }
+    loading: Boolean,
+  },
 })
 </script>
 
 <style lang="scss">
 .loading-overlay {
   display: grid;
-  > * {
-    grid-area: 1 / 1
+
+  & > * {
+    grid-area: 1 / 1;
   }
 
-  #background, #spinner {
+  #background,
+  #spinner {
     opacity: 0;
-    transition: opacity var(--transition-duration) ease var(--transition-duration);
-    z-index: -1;
+    z-index: 90;
+    transition: opacity var(--transition-duration) ease;
   }
 
-  .loading #background {
-    background: var(--surface);
-    opacity: 0.5;
-    z-index: 1;
-  }
+  &.loading {
+    #background {
+      opacity: 0.5;
+      background-color: var(--surface);
+      z-index: 90;
+    }
 
-  .loading #spinner {
-    opacity: 1;
-    z-index: 1;
+    #spinner {
+      opacity: 1;
+      z-index: 100;
+    }
   }
 }
 </style>
