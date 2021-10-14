@@ -22,7 +22,7 @@ export default defineComponent({
   setup({ selectionDisabled }, { emit }) {
     let selectedItem = ref(undefined)
     let selectedItemElement: HTMLElement | undefined = undefined
-    let selectItem = function (element: HTMLElement, item: any) {
+    let selectItem = function (element: EventTarget | null, item: any) {
       if (selectionDisabled) {
         return
       }
@@ -36,9 +36,9 @@ export default defineComponent({
         emit('update:selectedItem', item)
       }
 
-      selectedItemElement = element
-      if (element) {
-        element.classList.add('primary')
+      selectedItemElement = element as HTMLElement
+      if (selectedItemElement) {
+        selectedItemElement.classList.add('primary')
       }
     }
 
