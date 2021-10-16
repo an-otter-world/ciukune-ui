@@ -34,10 +34,11 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .text-field {
   display: grid;
   padding-top: calc(var(--font-size) * 0.8);
+  overflow: hidden;
 
   > input {
     background: transparent;
@@ -79,4 +80,9 @@ export default defineComponent({
   }
 }
 
+@media screen and (max-width: 768px) {
+  .text-field {
+    font-size: 0.8rem;
+  }
+}
 </style>

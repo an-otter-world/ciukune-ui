@@ -29,7 +29,7 @@ export default defineComponent({
   #background,
   #spinner {
     opacity: 0;
-    z-index: 90;
+    z-index: -1;
     transition: opacity var(--transition-duration) ease;
   }
 

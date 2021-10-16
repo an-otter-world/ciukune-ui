@@ -81,7 +81,7 @@ export default defineComponent({
     margin-right: var(--spacing);
   }
 
-  .small {
+  &.small {
     > .brand {
       flex-grow: 1;
       order: 1;
@@ -104,7 +104,7 @@ export default defineComponent({
         position: absolute;
         top: 3rem;
 
-        .opened {
+        &.opened {
           display: flex;
         }
       }
@@ -127,7 +127,7 @@ export default defineComponent({
       display: flex;
     }
 
-    a {
+    & a {
       align-items: center;
       padding: var(--spacing);
       text-transform: uppercase;
@@ -149,5 +149,4 @@ export default defineComponent({
     margin-right: var(--spacing);
   }
 }
-
 </style>
