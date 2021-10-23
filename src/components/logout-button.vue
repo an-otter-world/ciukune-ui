@@ -7,10 +7,15 @@ a(@click="logout()" href="#" class="logout-button")
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { getLogin } from '../lib/api/auth/login'
 
 export default defineComponent({
   setup() {
+    const loginHandle = getLogin()
+
     async function logout() {
+      const login = await loginHandle
+      await login.logout()
     }
 
     return { 

@@ -22,7 +22,6 @@ export default defineComponent({
   },
   setup() {
     return {
-      logout: async () => {}
     }
   },
 })

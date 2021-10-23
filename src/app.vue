@@ -1,16 +1,16 @@
-<template lang="pug">
-c-screen-center(v-if="!currentUser")
-  c-loading-overlay(:loading="loading")
-    login-view
-div(v-else)
-  navbar
-  router-view
+<template>
+<c-screen-center v-if="loading">
+  <c-loading-overlay :loading="loading"/>
+</c-screen-center>
+<div v-else-if="currentUser">
+  <navbar/>
+  <router-view/>
+</div>
+<login-view v-else/>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { ref } from 'vue'
-import { onMounted } from 'vue'
+import { defineComponent, watch } from 'vue'
 import LoginView from './views/login.vue'
 import Navbar from './components/navbar.vue'
 import { fieldRef, loadingRef, resourceRef } from '@dontnod/wlh'
