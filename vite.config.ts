@@ -6,11 +6,15 @@ export default defineConfig({
   plugins: [vue()],
   server: {
     proxy: {
-      '/api': 'http://localhost:8000/',
+      '/api': {
+        target: 'http://127.0.0.1:8000/',
+        xfwd: true
+      }
     },
   },
   build: {
     sourcemap: true,
+    minify: true,
     lib: {
       entry: './src/main.ts',
       name: 'ciukune',

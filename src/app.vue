@@ -13,6 +13,8 @@ import { ref } from 'vue'
 import { onMounted } from 'vue'
 import LoginView from './views/login.vue'
 import Navbar from './components/navbar.vue'
+import { fieldRef, loadingRef, resourceRef } from '@dontnod/wlh'
+import { getLogin } from './lib/api'
 
 
 export default defineComponent({
@@ -22,11 +24,9 @@ export default defineComponent({
     Navbar
   },
   setup() {
-    const loading = ref(false)
-    const currentUser = ref(undefined)
-
-    onMounted(async () => {
-    })
+    const login = getLogin()
+    const loading = loadingRef(login)
+    const currentUser = fieldRef(login, async login => await login.currentUser)
 
     return {
       loading,

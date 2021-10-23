@@ -2,7 +2,7 @@
 c-screen-center
   c-component
     header {{ $t('login.title') }}
-    c-api-form(:resource="login" @submit.prevent="login()")
+    c-api-form(:resource="login" @submit.prevent="doLogin()" :loading="loading")
       c-api-errors
       c-api-input(field="email")
         c-text-field(:placeholder="$t('login.email')" v-model="email")
@@ -16,19 +16,27 @@ c-screen-center
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { ref } from 'vue'
+import { ref, defineComponent } from 'vue'
+import { getLogin } from '../lib/api'
+import { loadingGuardRef, resourceRef } from '@dontnod/wlh'
 
 export default defineComponent({
     setup() {
+      const login = getLogin()
       let email = ref('')
       let password = ref('')
-      let login = async () => {}
+
+      const { loading, method: doLogin } = loadingGuardRef(async () => {
+        const loginResource = await login
+        await loginResource.login(email.value, password.value)
+      })
 
       return {
         email,
         password,
-        login
+        login,
+        loading,
+        doLogin
       }
     },
 })
