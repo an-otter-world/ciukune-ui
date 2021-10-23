@@ -1,24 +1,31 @@
-<template lang="pug">
-c-screen-center
-  c-component
-    header {{ $t('login.title') }}
-    c-api-form(:resource="login" @submit.prevent="doLogin()" :loading="loading")
-      c-api-errors
-      c-api-input(field="email")
-        c-text-field(:placeholder="$t('login.email')" v-model="email")
-      c-api-input(field="password")
-        c-text-field(password :placeholder="$t('login.password')" v-model="password")
-      c-button(type="submit") {{ $t('login.login') }} 
-    hr
-    div(class="links-area")
-      a(href='#') {{ $t('login.reset-password') }}
-      a(href='#') {{ $t('login.register') }}
+<template>
+<c-screen-center>
+  <c-component>
+    <header> {{ $t('login.title') }}</header>
+    <c-api-form :resource="login" @submit.prevent="doLogin()" :loading="loading">
+      <c-api-errors/>
+      <c-api-input field="email">
+        <c-text-field :placeholder="$t('login.email')" v-model="email"/>
+      </c-api-input>
+      <c-api-input field="password">
+        <c-text-field password :placeholder="$t('login.password')" v-model="password"/>
+      </c-api-input>
+      <c-button type="submit"> {{ $t('login.reset-password') }}</c-button>
+      <hr/>
+      <div class="links-area">
+        <a href='#'>{{ $t('login.reset-password') }}</a>
+        <a href='#'>{{ $t('login.register') }}</a>
+      </div>
+    </c-api-form>
+  </c-component>
+</c-screen-center>
 </template>
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
 import { getLogin } from '../lib/api'
 import { loadingGuardRef, resourceRef } from '@dontnod/wlh'
+import ScreenCenter from '@dontnod/wlh/src/components/screen-center.vue'
 
 export default defineComponent({
     setup() {
