@@ -1,9 +1,11 @@
 import { getApi, ObjectResource } from '@dontnod/wlh'
 
 export class User extends ObjectResource {
-  get email() { return this.get<string>('email') }
-  set email(value: string) { this.set<string>('email', value) }
+  static EMAIL = 'email'
+  get email() { return this.get<string>(User.EMAIL) }
+  set email(value: string) { this.set<string>(User.EMAIL, value) }
 
-  get username() { return this.get<string>('username') }
-  set username(value: string) { this.set<string>('username', value) }
+  static USERNAME = 'username'
+  get username() { return this.get<string>(User.USERNAME) }
+  set username(value: string) { this.set<string>(User.USERNAME, value) }
 }

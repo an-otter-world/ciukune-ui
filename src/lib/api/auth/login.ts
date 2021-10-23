@@ -1,8 +1,8 @@
-import { getApi, ObjectResource } from '@dontnod/wlh'
+import { ObjectResource, ResourceHandle } from '@dontnod/wlh'
 import { User } from '../user'
 
 export class Login extends ObjectResource {
-  get currentUser() { return this.getChild(User, 'current_user') }
+  get currentUser() { return this.getNested(User, 'current_user') }
 
   async login(email: string, password: string) {
     let response = await this._post({ email, password }) as {
@@ -24,5 +24,5 @@ export class Login extends ObjectResource {
 }
 
 export function getLogin() {
-  return getApi().get(Login, 'auth/login')
+  return ResourceHandle.get(Login, 'auth/login')
 }

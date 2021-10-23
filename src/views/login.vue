@@ -24,7 +24,6 @@
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
 import { getLogin } from '../lib/api'
-import { loadingGuardRef } from '@dontnod/wlh'
 
 export default defineComponent({
     setup() {
@@ -32,17 +31,16 @@ export default defineComponent({
       let email = ref('')
       let password = ref('')
 
-      const { loading, method: doLogin } = loadingGuardRef(async () => {
-        const loginResource = await login
-        await loginResource.login(email.value, password.value)
+      const [loading, doLogin] = login.do(async login => {
+        await login.login(email.value, password.value)
       })
 
       return {
+        login,
         email,
         password,
-        login,
         loading,
-        doLogin
+        doLogin,
       }
     },
 })

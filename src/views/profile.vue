@@ -13,14 +13,13 @@ c-component
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { getLogin } from '../lib/api'
-import { childResource, fieldRef } from '@dontnod/wlh'
 
 export default defineComponent({
   setup() {
     let login = getLogin()
-    let user = childResource(login, login => login.currentUser)
-    let email = fieldRef(user, user => user.email, (user, value) => user.email = value)
-    let username = fieldRef(user, user => user.username, (user, value) => user.username = value)
+    let user = login.nested(login => login.currentUser)
+    let email = user.field(login => login.email)
+    let username = user.field(login => login.username, (login, value) => login.username = value)
 
     return {
       user,
