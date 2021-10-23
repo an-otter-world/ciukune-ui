@@ -2,27 +2,28 @@
 c-component
   header
     h1 Profile
-  c-api-form(:resource="me")
+  c-api-form(:resource="currentUser")
     c-api-errors
     c-api-input(field="email")
-      c-text-field(:placeholder="$t('profile.email')" v-model="state.email")
+      c-text-field(:placeholder="$t('profile.email')" v-model="email")
     c-api-input(field="username" patch)
-      c-text-field(:placeholder="$t('profile.username')" v-model="state.username")
+      c-text-field(:placeholder="$t('profile.username')" v-model="username")
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { getMeResource } from '../api/resources/user/me'
+import { ref } from 'vue'
 
 export default defineComponent({
   async setup() {
-    const me = getMeResource()
-
-    await me.load()
+    let currentUser = ref(undefined)
+    let email = ref('')
+    let username = ref('')
 
     return {
-	    me: me,
-      state: me.state!
+      currentUser,
+      email,
+      username,
     }
   }
 })

@@ -1,27 +1,16 @@
-import { Backend, Resource } from '@ciukune/ckc'
-import { getResource } from '@ciukune/ckc'
-import { getMeResource } from '../user/me'
-import { MeResource } from '../user/me'
+import { getApi, ObjectResource } from '@dontnod/wlh'
 
-interface LoginResponse {
-  access: string
-  refresh: string
-}
-
-export class LoginResource extends Resource {
+export class Login extends ObjectResource {
   email: string | undefined
   password: string | undefined
 
-  constructor(url: string, backend: Backend) {
-    super(url, backend)
-    this._me = getMeResource()
-  }
-
   async login() {
-    let response = await this._post<LoginResponse, {}>({
+    let response = await this._post({
       email: this.email,
       password: this.password
-    })
+    }) as {
+      access: string
+    }
 
     if(!response) {
       return;
@@ -30,18 +19,15 @@ export class LoginResource extends Resource {
     this.email = undefined
     this.password = undefined
 
-    this.backend.setToken(response.access)
-    await this._me.load()
+    this.api.setToken(response.access)
   }
   
   async logout() {
-    this.backend.clearToken()
-    await this._me.load()
+    this.api.clearToken()
+    await this.load(true)
   }
-
-  private _me: MeResource
 }
 
-export function getLoginResource() {
-  return getResource(LoginResource, 'auth/login')
+export function getLogin() {
+  return getApi().get(Login, 'auth/login')
 }

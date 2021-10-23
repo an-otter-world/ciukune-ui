@@ -25,7 +25,7 @@ export default defineConfig({
         minifyInternalExports: false,
         manualChunks: {
           'vue': ['vue'],
-          'ckc':['@ciukune/ckc'],
+          'wlh':['@dontnod/wlh'],
           'vue-router': ['vue-router']
         }
       }

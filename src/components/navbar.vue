@@ -15,16 +15,14 @@ c-navbar
 <script lang="ts">
 import { defineComponent } from 'vue'
 import LogoutButton from './logout-button.vue'
-import { getLoginResource } from '../api/resources/auth/login'
 
 export default defineComponent({
   components: {
     LogoutButton
   },
   setup() {
-    const login = getLoginResource() 
     return {
-      logout: async () => await login.logout()
+      logout: async () => {}
     }
   },
 })

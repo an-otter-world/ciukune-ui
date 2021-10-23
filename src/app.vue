@@ -1,6 +1,6 @@
 <template lang="pug">
-c-screen-center(v-if="!me.state")
-  c-loading-overlay(:loading="me.loading")
+c-screen-center(v-if="!currentUser")
+  c-loading-overlay(:loading="loading")
     login-view
 div(v-else)
   navbar
@@ -13,7 +13,6 @@ import { ref } from 'vue'
 import { onMounted } from 'vue'
 import LoginView from './views/login.vue'
 import Navbar from './components/navbar.vue'
-import { getMeResource } from './api/resources/user/me'
 
 
 export default defineComponent({
@@ -23,16 +22,15 @@ export default defineComponent({
     Navbar
   },
   setup() {
-    const me = getMeResource()
     const loading = ref(false)
+    const currentUser = ref(undefined)
 
     onMounted(async () => {
-      await me.load()
     })
 
     return {
       loading,
-      me,
+      currentUser
     }
   },
 })

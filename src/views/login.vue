@@ -2,12 +2,12 @@
 c-screen-center
   c-component
     header {{ $t('login.title') }}
-    c-api-form(:resource="login" @submit.prevent="doLogin()")
+    c-api-form(:resource="login" @submit.prevent="login()")
       c-api-errors
       c-api-input(field="email")
-        c-text-field(:placeholder="$t('login.email')" v-model="login.email")
+        c-text-field(:placeholder="$t('login.email')" v-model="email")
       c-api-input(field="password")
-        c-text-field(password :placeholder="$t('login.password')" v-model="login.password")
+        c-text-field(password :placeholder="$t('login.password')" v-model="password")
       c-button(type="submit") {{ $t('login.login') }} 
     hr
     div(class="links-area")
@@ -17,19 +17,18 @@ c-screen-center
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { getLoginResource } from '../api/resources/auth/login'
+import { ref } from 'vue'
 
 export default defineComponent({
     setup() {
-      const login = getLoginResource()
-
-      async function doLogin() {
-        await login.login()
-      }
+      let email = ref('')
+      let password = ref('')
+      let login = async () => {}
 
       return {
-        doLogin: doLogin,
-        login: getLoginResource()
+        email,
+        password,
+        login
       }
     },
 })
