@@ -2,7 +2,7 @@
 <c-screen-center v-if="loading">
   <c-loading-overlay :loading="loading"/>
 </c-screen-center>
-<div v-else-if="currentUser">
+<div v-else-if="loggedIn">
   <navbar/>
   <router-view/>
 </div>
@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch } from 'vue'
+import { defineComponent, watch, reactive } from 'vue'
 import LoginView from './views/login.vue'
 import Navbar from './components/navbar.vue'
 import { getLogin } from './lib/api'
@@ -25,11 +25,14 @@ export default defineComponent({
   setup() {
     const login = getLogin()
     const loading = login.loading
-    const currentUser = login.nested(login => login.currentUser).available
+    const currentUser = login.nested(o => o.currentUser)
+    const loggedIn = currentUser.available
+    const username = currentUser.field(o => o.username)
 
     return {
       loading,
-      currentUser
+      loggedIn,
+      username
     }
   },
 })
