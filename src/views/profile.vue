@@ -7,7 +7,7 @@ c-component
     c-api-input(field="email")
       c-text-field(:placeholder="$t('profile.email')" v-model="email")
     c-api-input(field="username" patch)
-      c-text-field(:placeholder="$t('profile.username')" v-model="user.username")
+      c-text-field(:placeholder="$t('profile.username')" v-model="username")
 </template>
 
 <script lang="ts">
@@ -19,8 +19,8 @@ export default defineComponent({
   setup() {
     let login = getLogin()
     let user = childResource(login, login => login.currentUser)
-    let email = fieldRef(user, user => user.email)
-    let username = fieldRef(user, user => user.username)
+    let email = fieldRef(user, user => user.email, (user, value) => user.email = value)
+    let username = fieldRef(user, user => user.username, (user, value) => user.username = value)
 
     return {
       user,

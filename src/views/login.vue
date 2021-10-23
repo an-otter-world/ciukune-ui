@@ -24,8 +24,7 @@
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
 import { getLogin } from '../lib/api'
-import { loadingGuardRef, resourceRef } from '@dontnod/wlh'
-import ScreenCenter from '@dontnod/wlh/src/components/screen-center.vue'
+import { loadingGuardRef } from '@dontnod/wlh'
 
 export default defineComponent({
     setup() {
