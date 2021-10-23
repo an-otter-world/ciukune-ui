@@ -11,12 +11,8 @@ import { getLogin } from '../lib/api/auth/login'
 
 export default defineComponent({
   setup() {
-    const loginHandle = getLogin()
-
-    async function logout() {
-      const login = await loginHandle
-      await login.logout()
-    }
+    const login = getLogin()
+    const [_, logout ] = login.do(async login => await login.logout())
 
     return { 
       logout
