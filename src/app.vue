@@ -24,8 +24,8 @@ export default defineComponent({
   },
   setup() {
     const login = getLogin()
-    const loading = login.loading()
-    const currentUser = login.nested(login => login.currentUser).available()
+    const loading = login.loading
+    const currentUser = login.nested(login => login.currentUser).available
 
     return {
       loading,
