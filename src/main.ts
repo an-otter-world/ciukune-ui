@@ -10,6 +10,6 @@ createApp(App)
     .use(router)
     .mount('#app')
 
-const TestBlah = 'blah'
+const TestBlah = 'blouh'
 
 export { TestBlah }
