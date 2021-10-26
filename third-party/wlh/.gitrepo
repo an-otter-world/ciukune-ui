@@ -6,7 +6,7 @@
 [subrepo]
 	remote = git@github.com:dontnod/wlh
 	branch = dev
-	commit = 01d08e2204ec0cde3fe044f91c79c67520de6375
+	commit = d87dd514dfe39468c36bd8e8f5ef15ca00900838
 	parent = c07a9812d39877547590351324df0f9d1233e9d2
 	method = merge
 	cmdver = 0.4.0
