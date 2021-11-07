@@ -9,9 +9,11 @@
   },
   "dependencies": {
     "@dontnod/wlh": "./third-party/wlh",
+    "@vue/apollo-composable": "^4.0.0-alpha.15",
     "axios": "^0.21.1",
     "esbuild": "^0.9.4",
     "eslint": "^7.22.0",
+    "graphql": "^15.7.2",
     "pug": "^3.0.2",
     "sass": "^1.41.1",
     "vue": "^3.0.5",
