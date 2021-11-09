@@ -1,0 +1,8 @@
+schema: ../schema.graphql
+documents: ./src/graphql/users-query.graphql
+generates:
+  ./src/types.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-vue-urql
