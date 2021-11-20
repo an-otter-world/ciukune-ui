@@ -65,14 +65,22 @@ export type User = {
   username: Scalars['String'];
 };
 
-export type GetUsersQueryVariables = Exact<{ [key: string]: never; }>;
+export type UsersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetUsersQuery = { __typename?: 'Query', users?: Array<{ __typename?: 'User', username: string, email: string } | null | undefined> | null | undefined };
+export type UsersQuery = { __typename?: 'Query', users?: Array<{ __typename?: 'User', username: string, email: string } | null | undefined> | null | undefined };
+
+export type LoginMutationVariables = Exact<{
+  email: Scalars['String'];
+  password?: Maybe<Scalars['String']>;
+}>;
 
 
-export const GetUsersDocument = gql`
-    query GetUsers {
+export type LoginMutation = { __typename?: 'Mutation', refreshLogin?: { __typename?: 'Refresh', token: string } | null | undefined };
+
+
+export const UsersDocument = gql`
+    query users {
   users {
     username
     email
@@ -80,6 +88,17 @@ export const GetUsersDocument = gql`
 }
     `;
 
-export function useGetUsersQuery(options: Omit<Urql.UseQueryArgs<never, GetUsersQueryVariables>, 'query'> = {}) {
-  return Urql.useQuery<GetUsersQuery>({ query: GetUsersDocument, ...options });
+export function useUsersQuery(options: Omit<Urql.UseQueryArgs<never, UsersQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<UsersQuery>({ query: UsersDocument, ...options });
+};
+export const LoginDocument = gql`
+    mutation login($email: String!, $password: String) {
+  refreshLogin(token: $email) {
+    token
+  }
+}
+    `;
+
+export function useLoginMutation() {
+  return Urql.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument);
 };

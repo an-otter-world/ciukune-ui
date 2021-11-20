@@ -12,6 +12,7 @@
     "@dontnod/wlh": "./third-party/wlh",
     "@graphql-codegen/typescript-resolvers": "^2.4.0",
     "@graphql-codegen/typescript-vue-urql": "^2.2.0",
+    "@urql/vue": "^0.6.0",
     "@vue/apollo-composable": "^4.0.0-alpha.15",
     "axios": "^0.21.1",
     "esbuild": "^0.9.4",

@@ -23,11 +23,11 @@
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
-import { getLogin } from '../lib/api'
+import { useLoginMutation } from '../graphql'
 
 export default defineComponent({
     setup() {
-      const login = getLogin()
+      const login = useLoginMutation()
       let email = ref('')
       let password = ref('')
 

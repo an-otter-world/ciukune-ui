@@ -11,20 +11,12 @@ c-component
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { getLogin } from '../lib/api'
+import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
   setup() {
-    let login = getLogin()
-    let user = login.nested(r => r.currentUser)
-    let email = user.field(r => r.email)
-    let username = user.field(r => r.username, (r, value) => r.username = value)
 
     return {
-      user,
-      email,
-      username,
     }
   }
 })
