@@ -1,17 +1,17 @@
-import App from './app.vue'
-import i18n from './plugins/i18n'
 import router from './plugins/router'
-import { createApp } from 'vue'
-import { User  } from './lib/api'
-import { AdminMenu } from './views/admin.vue'
-
+import i18n from './plugins/i18n'
+import urql from './plugins/urql'
 import wlh from '@dontnod/wlh'
+import App from './app.vue'
+import { User  } from './lib/api'
+import { createApp } from 'vue'
 
 const CiukuneApp = createApp(App)
-    .use(wlh)
-    .use(i18n)
     .use(router)
+    .use(i18n)
+    .use(urql)
+    .use(wlh)
     .mount('#app')
 
-export { CiukuneApp, AdminMenu, User }
+export { CiukuneApp, User }
 

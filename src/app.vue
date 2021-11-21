@@ -1,6 +1,6 @@
 <template>
-<c-screen-center v-if="loading">
-  <c-loading-overlay :loading="loading"/>
+<c-screen-center v-if="fetching">
+  <c-loading-overlay loading="true"/>
 </c-screen-center>
 <div v-else-if="loggedIn">
   <navbar/>
@@ -10,10 +10,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch, reactive } from 'vue'
 import LoginView from './views/login.vue'
 import Navbar from './components/navbar.vue'
-import { getLogin } from './lib/api'
+import { defineComponent, computed } from 'vue'
+import { useCurrentUserQuery } from './graphql'
 
 
 export default defineComponent({
@@ -23,16 +23,12 @@ export default defineComponent({
     Navbar
   },
   setup() {
-    const login = getLogin()
-    const loading = login.loading
-    const currentUser = login.nested(o => o.currentUser)
-    const loggedIn = currentUser.available
-    const username = currentUser.field(o => o.username)
+    const {data: currentUser, fetching } = useCurrentUserQuery()
 
     return {
-      loading,
-      loggedIn,
-      username
+      fetching,
+      loggedIn: computed(() => !!(currentUser.value?.currentUser)),
+      username: computed(() => currentUser.value?.currentUser?.username)
     }
   },
 })

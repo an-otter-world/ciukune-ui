@@ -2,7 +2,7 @@
 <c-screen-center>
   <c-component>
     <header> {{ $t('login.title') }}</header>
-    <c-api-form :resource="login" @submit.prevent="doLogin()" :loading="loading">
+    <c-api-form :resource="login" @submit.prevent="login()" :loading="fetching">
       <c-api-errors/>
       <c-api-input field="email">
         <c-text-field :placeholder="$t('login.email')" v-model="email"/>
@@ -23,24 +23,19 @@
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
-import { useLoginMutation } from '../graphql'
+import { useLoginMutation, bindRefs } from '../graphql'
 
 export default defineComponent({
     setup() {
-      const login = useLoginMutation()
-      let email = ref('')
-      let password = ref('')
-
-      const [loading, doLogin] = login.do(async login => {
-        await login.login(email.value, password.value)
-      })
+      const email = ref('')
+      const password = ref('')
+      const {execute: login, fetching } = bindRefs(useLoginMutation, {email, password})
 
       return {
         login,
         email,
         password,
-        loading,
-        doLogin,
+        fetching,
       }
     },
 })

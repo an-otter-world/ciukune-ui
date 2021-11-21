@@ -4,9 +4,3 @@ query users {
     email
   }
 }
-
-mutation login($email: String!, $password: String) {
-  refreshLogin(token: $email) {
-    token,
-  }
-}

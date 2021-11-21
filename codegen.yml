@@ -1,7 +1,7 @@
 schema: ../schema.graphql
 documents: ./src/graphql/**.graphql
 generates:
-  ./src/graphql/index.ts:
+  ./src/graphql/_generated.ts:
     plugins:
       - typescript:
         withComponent: true
