@@ -2,7 +2,7 @@
 <c-screen-center>
   <c-component>
     <header> {{ $t('login.title') }}</header>
-    <c-api-form :resource="login" @submit.prevent="login()" :loading="fetching">
+    <c-api-form :operation="login" @submit.prevent="login.execute()">
       <c-api-errors/>
       <c-api-input field="email">
         <c-text-field :placeholder="$t('login.email')" v-model="email"/>
@@ -29,13 +29,12 @@ export default defineComponent({
     setup() {
       const email = ref('')
       const password = ref('')
-      const {execute: login, fetching } = bindRefs(useLoginMutation, {email, password})
+      const login = bindRefs(useLoginMutation, {email, password})
 
       return {
         login,
         email,
         password,
-        fetching,
       }
     },
 })
