@@ -1,6 +1,6 @@
 <template lang="pug">
 a(@click="logout()" href="#" class="logout-button")
-  div(class="c-router-link c-flex-row")
+  div(class="router-link flex-row")
     c-icon(icon="sign-out-alt")
     div {{ $t("logout-button.logout") }}
 </template>
@@ -18,9 +18,11 @@ export default defineComponent({
 })
 </script>
 
-<style>
-.logout-button > svg {
-  margin-right: var(--ciu-spacing);
+<style lang="scss">
+.logout-button {
+  svg {
+    margin-right: var(--spacing);
+  }
 }
 </style>
 
