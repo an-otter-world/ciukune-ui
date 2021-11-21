@@ -3,7 +3,6 @@ import i18n from './plugins/i18n'
 import urql from './plugins/urql'
 import wlh from '@dontnod/wlh'
 import App from './app.vue'
-import { User  } from './lib/api'
 import { createApp } from 'vue'
 
 const CiukuneApp = createApp(App)
@@ -13,5 +12,5 @@ const CiukuneApp = createApp(App)
     .use(wlh)
     .mount('#app')
 
-export { CiukuneApp, User }
+export { CiukuneApp }
 
