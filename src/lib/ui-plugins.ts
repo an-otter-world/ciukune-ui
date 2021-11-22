@@ -5,4 +5,5 @@ export interface IMenuPlugin {
   icon: string
   label: string,
   path: string,
+  routeName: string,
 }

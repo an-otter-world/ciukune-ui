@@ -10,21 +10,20 @@ export function getPlugins<TPlugin>(key: InjectionKey<TPlugin>) {
 
 class PluginManager {
   register<TPlugin>(key: InjectionKey<TPlugin>, plugin: TPlugin) {
-    let plugins = this._plugins.get(key) 
-    if(plugins === undefined) {
-      plugins = []
-      this._plugins.set(key, plugins)
-    }
+    const plugins = this.get(key) 
     plugins.push(plugin)
   }
 
   get<TPlugin>(key: InjectionKey<TPlugin>) {
-    const plugins = this._plugins.get(key)
+    let plugins = this._plugins.get(key)
     if(!plugins) {
-      return undefined
+      plugins = reactive([])
+      this._plugins.set(key, plugins)
     }
-    return reactive(plugins) as TPlugin[]
+    return plugins as TPlugin[]
   }
+
+
 
   private readonly _plugins = new Map<Symbol, any[]>()
 }

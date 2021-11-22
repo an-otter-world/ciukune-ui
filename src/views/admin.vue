@@ -11,8 +11,8 @@
 
 <script lang="ts">
 import { defineComponent, getCurrentInstance, reactive } from 'vue'
-import PluginMenu from '../components/common/plugin-menu.vue'
-import { AdminMenu } from './admin'
+import PluginMenu from '../components/common/pluggable-menu.vue'
+import { AdminMenu } from './admin-definitions'
 import General from './admin/general.vue'
 
 
