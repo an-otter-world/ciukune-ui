@@ -1,9 +1,8 @@
 <template>
 <div>
   <div v-for="item in menu.items" :key="item">
-    <router-link :to="item.link">
-    <c-icon :icon="item.icon"/>
-    <div> {{ item.label }}</div>
+    <router-link :to="item.link" :icon="item.icon">
+      <div> {{ item.label }}</div>
     </router-link>
   </div>
 </div>
@@ -22,14 +21,17 @@ export interface MenuItemDescriptor {
 }
 
 export interface MenuItem {
-  path: string,
   icon: string
+  label: string,
+  link: string,
 }
 
 export class Menu {
   constructor(parentRoute: string | undefined = undefined){
     this._parentRoute = parentRoute
   }
+
+  get items() { return this._menuItems; }
 
   addItem(item: MenuItemDescriptor) {
     if(this._parentRoute) {
@@ -47,7 +49,7 @@ export class Menu {
 
     }
 
-    this.items.push( {
+    this._menuItems.push( {
       label: item.label,
       icon: item.icon,
       link: this._parentRoute + '/' + item.path
@@ -56,13 +58,14 @@ export class Menu {
 
   private readonly _parentRoute: string | undefined
   private readonly _items: MenuItemDescriptor[] = []
-  private readonly items = []
+  private readonly _menuItems: MenuItem[] = []
 }
 
 export default defineComponent({
   props: {
     menu: {
-      type: Object as PropType<Menu>
+      type: Object as PropType<Menu>,
+      required: true
     }
   },
   setup() {

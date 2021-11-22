@@ -13,4 +13,5 @@ const CiukuneApp = createApp(App)
     .mount('#app')
 
 export { CiukuneApp }
+export { AdminMenu } from './views/admin.vue'
 
