@@ -10,16 +10,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue'
-import PluginMenu, { Menu } from '../components/common/plugin-menu.vue'
+import { defineComponent, getCurrentInstance, reactive } from 'vue'
+import PluginMenu from '../components/common/plugin-menu.vue'
+import { AdminMenu } from './admin'
 import General from './admin/general.vue'
 
-const AdminMenu = new Menu('/admin')
-export { AdminMenu }
 
 export default defineComponent({
   components: { PluginMenu },
   setup() {
+    const adminMenu = getPlugins(AdminMenu)
     AdminMenu.addItem({
       component: General,
       path: '/general',
