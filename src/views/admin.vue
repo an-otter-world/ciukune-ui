@@ -1,18 +1,15 @@
-<template>
-<div>
-  <c-component>
-    <pluggable-menu :descriptors="adminMenu" parent-route-name="Admin"/>
-  </c-component>
-  <c-component>
-    <router-view/>
-  </c-component>
-</div>
+<template lang="pug">
+div
+  w-component
+    pluggable-menu(:descriptors="adminMenu" parent-route-name="Admin")
+  w-component
+    router-view
 </template>
 
 <script lang="ts">
-import { IMenuDescriptor } from '../components/dynamic-menu.vue'
-import General from './admin/general.vue'
 import DynamicMenu from '../components/dynamic-menu.vue'
+import General from './admin/general.vue'
+import { IMenuDescriptor } from '../components/dynamic-menu.vue'
 import { defineComponent } from 'vue'
 import { registerPlugin, PluginKey, getPlugins } from '../lib/plugins'
 
