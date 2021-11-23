@@ -2,12 +2,12 @@
 c-component
   header
     h1 Profile
-  c-api-form(:resource="user")
+  c-api-form()
     c-api-errors
     c-api-input(field="email")
-      c-text-field(:placeholder="$t('profile.email')" v-model="email")
+      c-text-field(:placeholder="$t('profile.email')")
     c-api-input(field="username" patch)
-      c-text-field(:placeholder="$t('profile.username')" v-model="username")
+      c-text-field(:placeholder="$t('profile.username')")
 </template>
 
 <script lang="ts">

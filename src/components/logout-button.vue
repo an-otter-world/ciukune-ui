@@ -7,7 +7,7 @@ a(@click="logout()" href="#" class="logout-button")
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useLogout } from '../plugins/urql'
+import { useLogout } from '../lib/urql'
 
 export default defineComponent({
   setup() {

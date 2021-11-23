@@ -1,20 +1,22 @@
-import { InjectionKey, reactive, Component } from 'vue'
+import { reactive, InjectionKey } from 'vue'
 
-export function registerPlugin<TPlugin>(key: InjectionKey<TPlugin>, plugin: TPlugin) {
+export interface PluginKey<TPlugin> extends Symbol {}
+
+export function registerPlugin<TPlugin>(key: PluginKey<TPlugin>, plugin: TPlugin) {
   _instance.register(key, plugin)
 }
 
-export function getPlugins<TPlugin>(key: InjectionKey<TPlugin>) {
+export function getPlugins<TPlugin>(key: PluginKey<TPlugin>): TPlugin[] {
   return _instance.get(key)
 }
 
 class PluginManager {
-  register<TPlugin>(key: InjectionKey<TPlugin>, plugin: TPlugin) {
+  register<TPlugin>(key: PluginKey<TPlugin>, plugin: TPlugin) {
     const plugins = this.get(key) 
     plugins.push(plugin)
   }
 
-  get<TPlugin>(key: InjectionKey<TPlugin>) {
+  get<TPlugin>(key: PluginKey<TPlugin>) {
     let plugins = this._plugins.get(key)
     if(!plugins) {
       plugins = reactive([])

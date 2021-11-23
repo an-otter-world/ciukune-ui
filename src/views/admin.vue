@@ -1,7 +1,7 @@
 <template>
 <div>
   <c-component>
-    <plugin-menu :menu="menu"/>
+    <pluggable-menu :descriptors="adminMenu" parent-route-name="Admin"/>
   </c-component>
   <c-component>
     <router-view/>
@@ -10,25 +10,27 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, getCurrentInstance, reactive } from 'vue'
-import PluginMenu from '../components/common/pluggable-menu.vue'
-import { AdminMenu } from './admin-definitions'
+import { IMenuDescriptor } from '../components/dynamic-menu.vue'
 import General from './admin/general.vue'
+import DynamicMenu from '../components/dynamic-menu.vue'
+import { defineComponent } from 'vue'
+import { registerPlugin, PluginKey, getPlugins } from '../lib/plugins'
 
+export const AdminMenu: PluginKey<IMenuDescriptor> = Symbol('Admin menu plugins')
+
+registerPlugin(AdminMenu, {
+  component: General,
+  icon: 'user',
+  label: 'General',
+  path: '/general',
+  routeName: 'AdminGeneral'
+})
 
 export default defineComponent({
-  components: { PluginMenu },
+  components: { DynamicMenu },
   setup() {
-    const adminMenu = getPlugins(AdminMenu)
-    AdminMenu.addItem({
-      component: General,
-      path: '/general',
-      icon: 'user',
-      label: 'General'
-    })
-
     return {
-      menu: reactive(AdminMenu)
+      adminMenu: getPlugins(AdminMenu)
     }  
   },
 })
