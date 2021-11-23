@@ -24,19 +24,20 @@
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
 import { useLoginMutation, bindRefs } from '../graphql'
+import ScreenCenter from '@dontnod/wlh/src/components/screen-center.vue'
+import Chips from '@dontnod/wlh/src/components/chips.vue';
 
 export default defineComponent({
     setup() {
-      const email = ref('')
-      const password = ref('')
-      const login = bindRefs(useLoginMutation, {email, password})
-
-      return {
-        login,
-        email,
-        password,
-      }
-    },
+        const email = ref("");
+        const password = ref("");
+        const login = bindRefs(useLoginMutation, { email, password });
+        return {
+            login,
+            email,
+            password,
+        };
+    }
 })
 </script>
 

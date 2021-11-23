@@ -1,6 +1,6 @@
 <template>
 <c-screen-center v-if="fetching">
-  <c-loading-overlay loading="true"/>
+  <c-loading-overlay :loading="true"/>
 </c-screen-center>
 <div v-else-if="loggedIn">
   <navbar/>

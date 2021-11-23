@@ -4,9 +4,16 @@ mutation login($email: String!, $password: String!) {
   }
 }
 
+fragment UserFields on UserNode {
+  username,
+}
+
+fragment OtherFields on UserNode {
+  email
+}
+
 query currentUser {
   currentUser {
-    username,
-    email
+    ...UserFields
   }
 }

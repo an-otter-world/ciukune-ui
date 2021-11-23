@@ -1,6 +1,6 @@
-import router from './plugins/router'
-import i18n from './plugins/i18n'
-import urql from './plugins/urql'
+import router from './lib/router'
+import i18n from './lib/i18n'
+import urql from './lib/urql'
 import wlh from '@dontnod/wlh'
 import App from './app.vue'
 import { createApp } from 'vue'
@@ -14,4 +14,3 @@ const CiukuneApp = createApp(App)
 
 export { CiukuneApp }
 export { AdminMenu } from './views/admin.vue'
-
