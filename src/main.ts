@@ -14,3 +14,5 @@ const CiukuneApp = createApp(App)
 
 export { CiukuneApp }
 export { AdminMenu } from './views/admin.vue'
+export { getPlugins } from './lib/plugins'
+export { registerPlugin } from './lib/plugins'

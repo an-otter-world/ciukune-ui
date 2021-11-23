@@ -6,7 +6,6 @@ div
 </template>
 
 <script lang="ts">
-import { Component } from 'vue'
 import { PropType } from 'vue'
 import { computed } from 'vue'
 import { defineComponent } from 'vue'
@@ -16,14 +15,7 @@ import { onUnmounted } from 'vue'
 import { toRef } from 'vue'
 import { useRouter } from 'vue-router'
 import { watch } from 'vue'
-
-export interface IMenuDescriptor {
-  component: Component
-  icon: string
-  label: string
-  path: string
-  routeName: string
-}
+import { IMenuDescriptor } from './test'
 
 export default defineComponent({
   props: {

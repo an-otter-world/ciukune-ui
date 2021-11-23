@@ -7,11 +7,10 @@ div
 </template>
 
 <script lang="ts">
-import DynamicMenu from '../components/dynamic-menu.vue'
 import General from './admin/general.vue'
-import { IMenuDescriptor } from '../components/dynamic-menu.vue'
-import { defineComponent } from 'vue'
-import { registerPlugin, PluginKey, getPlugins } from '../lib/plugins'
+import type { IMenuDescriptor } from '../components/test'
+import type { PluginKey } from '../lib/plugins'
+import { registerPlugin } from '../lib/plugins'
 
 export const AdminMenu: PluginKey<IMenuDescriptor> = Symbol('Admin menu plugins')
 
@@ -22,13 +21,10 @@ registerPlugin(AdminMenu, {
   path: '/general',
   routeName: 'AdminGeneral'
 })
+</script>
 
-export default defineComponent({
-  components: { DynamicMenu },
-  setup() {
-    return {
-      adminMenu: getPlugins(AdminMenu)
-    }  
-  },
-})
+<script lang="ts" setup>
+import { getPlugins } from '../lib/plugins'
+
+const adminMenu = getPlugins(AdminMenu)
 </script>

@@ -14,22 +14,13 @@ w-screen-center
         a(href='#') {{ $t('login.register') }}
 </template>
 
-<script lang="ts">
-import { ref, defineComponent } from 'vue'
+<script lang="ts" setup>
+import { ref } from 'vue'
 import { useLoginMutation, bindRefs } from '../graphql'
 
-export default defineComponent({
-    setup() {
-        const email = ref("");
-        const password = ref("");
-        const login = bindRefs(useLoginMutation, { email, password });
-        return {
-            login,
-            email,
-            password,
-        };
-    }
-})
+const email = ref("");
+const password = ref("");
+const login = bindRefs(useLoginMutation, { email, password });
 </script>
 
 <style scoped>
