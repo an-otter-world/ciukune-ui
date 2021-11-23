@@ -31,7 +31,7 @@ export interface IMenuDescriptor {
 export default defineComponent({
   props: {
     descriptors: {
-      type: Array as PropType<Array<IMenuDescriptor>>,
+      type: Array as PropType<IMenuDescriptor[]>,
       default: () => [],
       required: false
     },
@@ -42,6 +42,7 @@ export default defineComponent({
     }
   },
   setup(props) {
+    // Can't use toRefs, as it messes with IMenuDescriptor[] type, resulting in a compilation error.
     const parentRouteName = toRef(props, 'parentRouteName')
     const descriptors = toRef(props, 'descriptors')
 
