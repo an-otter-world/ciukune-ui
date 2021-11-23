@@ -1,14 +1,14 @@
 <template lang="pug">
-c-navbar
+w-navbar
   template(v-slot:brand)
     h1 Ciu Kune
   router-link(to="/") Home
   template(v-slot:end)
-    c-dropdown
+    w-dropdown
       template(#header)
-        c-icon(icon="user-circle")
-      c-router-link(to="/profile" icon="user-circle") {{ $t('navbar.profile') }}
-      c-router-link(to="/admin" icon="user-circle") {{ $t('navbar.admin') }}
+        w-icon(icon="user-circle")
+      w-router-link(to="/profile" icon="user-circle") {{ $t('navbar.profile') }}
+      w-router-link(to="/admin" icon="user-circle") {{ $t('navbar.admin') }}
       logout-button
 </template>
 

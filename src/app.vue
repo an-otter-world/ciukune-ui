@@ -1,12 +1,10 @@
-<template>
-<c-screen-center v-if="fetching">
-  <c-loading-overlay :loading="true"/>
-</c-screen-center>
-<div v-else-if="loggedIn">
-  <navbar/>
-  <router-view/>
-</div>
-<login-view v-else/>
+<template lang="pug">
+w-screen-center(v-if="fetching")
+  w-loading-overlay(:loading="true")
+div(v-else-if="loggedIn")
+  navbar
+  router-view
+login-view(v-else)
 </template>
 
 <script lang="ts">
