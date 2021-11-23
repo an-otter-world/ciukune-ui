@@ -1,11 +1,8 @@
-<template>
-<div>
-  <div v-for="item in items" :key="item.link">
-    <router-link :to="item.link" :icon="item.icon">
-      <div> {{ item.label }}</div>
-    </router-link>
-  </div>
-</div>
+<template lang="pug">
+div
+  div(v-for="item in items" :key="item.link")
+    router-link(:to="item.link" :icon="item.icon")
+      div {{ item.label }}
 </template>
 
 <script lang="ts">
