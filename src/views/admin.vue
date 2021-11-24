@@ -8,7 +8,7 @@ div
 
 <script lang="ts">
 import General from './admin/general.vue'
-import type { IMenuDescriptor } from '../components/test'
+import type { IMenuDescriptor } from '../components/dynamic-menu.vue'
 import type { PluginKey } from '../lib/plugins'
 import { registerPlugin } from '../lib/plugins'
 
@@ -21,8 +21,8 @@ registerPlugin(AdminMenu, {
   path: '/general',
   routeName: 'AdminGeneral'
 })
-</script>
 
+</script>
 <script lang="ts" setup>
 import { getPlugins } from '../lib/plugins'
 

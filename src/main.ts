@@ -12,7 +12,7 @@ const CiukuneApp = createApp(App)
     .use(wlh)
     .mount('#app')
 
-export { CiukuneApp }
 export { AdminMenu } from './views/admin.vue'
+export { CiukuneApp }
 export { getPlugins } from './lib/plugins'
 export { registerPlugin } from './lib/plugins'
