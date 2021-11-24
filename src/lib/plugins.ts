@@ -10,6 +10,9 @@ export function getPlugins<TPlugin>(key: PluginKey<TPlugin>): TPlugin[] {
   return _instance.get(key)
 }
 
+/**
+ * Singleton holding instances of plugins, that can be registered by ui part of ciukune add-ons.
+ */
 class PluginManager {
   register<TPlugin>(key: PluginKey<TPlugin>, plugin: TPlugin) {
     const plugins = this.get(key) 
@@ -24,8 +27,6 @@ class PluginManager {
     }
     return plugins as TPlugin[]
   }
-
-
 
   private readonly _plugins = new Map<Symbol, any[]>()
 }

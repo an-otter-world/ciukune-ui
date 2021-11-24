@@ -1,31 +1,22 @@
 <template lang="pug">
 div
   w-component
-    dynamic-menu(:descriptors="adminMenu" parent-route-name="Admin")
+    div(v-for="item in menu" :key="item.link")
+      router-link(:to="item.link" :icon="item.icon")
+        div {{ item.label }}
   w-component
     router-view
 </template>
 
 <script lang="ts">
-import General from './admin/general.vue'
-import type { IMenuDescriptor } from '../components/dynamic-menu.vue'
+import type { MenuItem } from '../lib/ui'
 import type { PluginKey } from '../lib/plugins'
-import { registerPlugin } from '../lib/plugins'
 
-export const AdminMenu: PluginKey<IMenuDescriptor> = Symbol('Admin menu plugins')
-
-registerPlugin(AdminMenu, {
-  component: General,
-  icon: 'user',
-  label: 'General',
-  path: 'general',
-  routeName: 'AdminGeneral'
-})
+export const AdminMenu: PluginKey<MenuItem> = Symbol('ciu_admin_menu_plugins')
 
 </script>
 <script lang="ts" setup>
 import { getPlugins } from '../lib/plugins'
-import DynamicMenu from '../components/dynamic-menu.vue'
 
-const adminMenu = getPlugins(AdminMenu)
+const menu = getPlugins(AdminMenu)
 </script>
