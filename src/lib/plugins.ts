@@ -6,13 +6,10 @@ export function registerPlugin<TPlugin>(key: PluginKey<TPlugin>, plugin: TPlugin
   _instance.register(key, plugin)
 }
 
-export function getPlugins<TPlugin>(key: PluginKey<TPlugin>): TPlugin[] {
+export function getPlugins<TPlugin>(key: PluginKey<TPlugin>): readonly TPlugin[] {
   return _instance.get(key)
 }
 
-/**
- * Singleton holding instances of plugins, that can be registered by ui part of ciukune add-ons.
- */
 class PluginManager {
   register<TPlugin>(key: PluginKey<TPlugin>, plugin: TPlugin) {
     const plugins = this.get(key) 
