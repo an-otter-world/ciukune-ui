@@ -1,7 +1,7 @@
 <template lang="pug">
 div
   w-component
-    pluggable-menu(:descriptors="adminMenu" parent-route-name="Admin")
+    dynamic-menu(:descriptors="adminMenu" parent-route-name="Admin")
   w-component
     router-view
 </template>
@@ -18,13 +18,14 @@ registerPlugin(AdminMenu, {
   component: General,
   icon: 'user',
   label: 'General',
-  path: '/general',
+  path: 'general',
   routeName: 'AdminGeneral'
 })
 
 </script>
 <script lang="ts" setup>
 import { getPlugins } from '../lib/plugins'
+import DynamicMenu from '../components/dynamic-menu.vue'
 
 const adminMenu = getPlugins(AdminMenu)
 </script>
