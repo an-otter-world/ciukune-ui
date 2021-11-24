@@ -1,4 +1,4 @@
-import { reactive, InjectionKey } from 'vue'
+import { shallowReactive } from 'vue'
 
 export interface PluginKey<TPlugin> extends Symbol {}
 
@@ -19,7 +19,7 @@ class PluginManager {
   get<TPlugin>(key: PluginKey<TPlugin>) {
     let plugins = this._plugins.get(key)
     if(!plugins) {
-      plugins = reactive([])
+      plugins = shallowReactive([])
       this._plugins.set(key, plugins)
     }
     return plugins as TPlugin[]
